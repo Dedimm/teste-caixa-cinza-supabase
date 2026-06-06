@@ -1,0 +1,83 @@
+{
+  "info": {
+    "name": "FoodExpress API Testes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Requisição 1 - Login Válido",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/auth/v1/token?grant_type=password",
+        "header": [
+          { "key": "apikey", "value": "{{api_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"{{email}}\", \"password\": \"{{password}}\"}"
+        }
+      }
+    },
+    {
+      "name": "Requisição 2 - Senha Incorreta",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/auth/v1/token?grant_type=password",
+        "header": [
+          { "key": "apikey", "value": "{{api_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"{{email}}\", \"password\": \"senhaerrada\"}"
+        }
+      }
+    },
+    {
+      "name": "Requisição 3 - Usuário Inexistente",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/auth/v1/token?grant_type=password",
+        "header": [
+          { "key": "apikey", "value": "{{api_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"naoexiste@teste.com\", \"password\": \"123456\"}"
+        }
+      }
+    },
+    {
+      "name": "Requisição 4 - Campos Vazios",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/auth/v1/token?grant_type=password",
+        "header": [
+          { "key": "apikey", "value": "{{api_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"\", \"password\": \"\"}"
+        }
+      }
+    },
+    {
+      "name": "Requisição 5 - Credenciais Inválidas",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/auth/v1/token?grant_type=password",
+        "header": [
+          { "key": "apikey", "value": "{{api_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"fake@fake.com\", \"password\": \"123\"}"
+        }
+      }
+    }
+  ]
+}
